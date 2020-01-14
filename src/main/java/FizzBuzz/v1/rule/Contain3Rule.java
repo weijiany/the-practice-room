@@ -1,6 +1,6 @@
 package FizzBuzz.v1.rule;
 
-import FizzBuzz.v1.NameConstant;
+import FizzBuzz.NameConstant;
 
 public class Contain3Rule implements Rule {
     @Override

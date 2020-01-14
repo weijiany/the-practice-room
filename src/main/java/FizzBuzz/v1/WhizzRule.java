@@ -1,5 +1,6 @@
 package FizzBuzz.v1;
 
+import FizzBuzz.NameConstant;
 import FizzBuzz.v1.rule.Rule;
 
 public class WhizzRule implements Rule {

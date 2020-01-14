@@ -1,4 +1,4 @@
-package FizzBuzz.v1;
+package FizzBuzz;
 
 public final class NameConstant {
     private NameConstant() {}
