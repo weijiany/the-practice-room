@@ -35,6 +35,13 @@ public class FizzBuzzTest {
     }
 
     @Test
+    void should_return_given_number_is_3_multiples_and_7_multiples() {
+        String word = student.say(21);
+
+        Assertions.assertEquals("FizzWhizz", word);
+    }
+
+    @Test
     void should_return_given_number_is_only_contain_3() {
         String word = student.say(30);
 
