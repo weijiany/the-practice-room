@@ -3,10 +3,10 @@ package MarsRover.domain.command;
 import MarsRover.domain.Direction;
 import MarsRover.domain.Rover;
 
-public class MoveCommand implements Command {
+public class BackCommand implements Command {
 
     @Override
     public void exec(Direction direction, Rover rover) {
-        direction.forward(rover);
+        direction.back(rover);
     }
 }

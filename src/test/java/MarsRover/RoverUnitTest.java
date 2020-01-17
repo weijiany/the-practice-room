@@ -2,22 +2,25 @@ package MarsRover;
 
 import MarsRover.domain.Direction;
 import MarsRover.domain.Rover;
+import MarsRover.domain.command.BackCommand;
 import MarsRover.domain.command.MoveCommand;
 import MarsRover.domain.command.TurnLeftCommand;
 import MarsRover.domain.command.TurnRightCommand;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import static MarsRover.domain.Direction.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RoverUnitTest {
 
     private static Object[][] roverForMove() {
         return new Object[][] {
-                {new Rover(0, 1, Direction.N), Direction.N},
-                {new Rover(0, -1, Direction.S), Direction.S},
-                {new Rover(1, 0, Direction.E), Direction.E},
-                {new Rover(-1, 0, Direction.W), Direction.W}
+                {new Rover(0, 1, N), N},
+                {new Rover(0, -1, S), S},
+                {new Rover(1, 0, E), E},
+                {new Rover(-1, 0, W), W}
         };
     }
 
@@ -32,10 +35,10 @@ class RoverUnitTest {
 
     private static Object[][] roverForTurnLeft() {
         return new Object[][] {
-                {new Rover(0, 0, Direction.W), Direction.N},
-                {new Rover(0, 0, Direction.N), Direction.E},
-                {new Rover(0, 0, Direction.E), Direction.S},
-                {new Rover(0, 0, Direction.S), Direction.W},
+                {new Rover(0, 0, W), N},
+                {new Rover(0, 0, N), E},
+                {new Rover(0, 0, E), S},
+                {new Rover(0, 0, S), W},
         };
     }
 
@@ -50,10 +53,10 @@ class RoverUnitTest {
 
     private static Object[][] roverForTurnRight() {
         return new Object[][] {
-                {new Rover(0, 0, Direction.E), Direction.N},
-                {new Rover(0, 0, Direction.S), Direction.E},
-                {new Rover(0, 0, Direction.W), Direction.S},
-                {new Rover(0, 0, Direction.N), Direction.W},
+                {new Rover(0, 0, E), N},
+                {new Rover(0, 0, S), E},
+                {new Rover(0, 0, W), S},
+                {new Rover(0, 0, N), W},
         };
     }
 
@@ -64,5 +67,13 @@ class RoverUnitTest {
         rover.move(new TurnRightCommand());
 
         assertEquals(expected, rover);
+    }
+
+    @Test
+    void should_move_back() {
+        Rover rover = new Rover(0, 0, N);
+        rover.move(new BackCommand());
+
+        assertEquals(new Rover(0, -1, N), rover);
     }
 }
