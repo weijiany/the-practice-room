@@ -1,4 +1,9 @@
-package MarsRover.v1.command;
+package MarsRover;
+
+import MarsRover.domain.command.Command;
+import MarsRover.domain.command.MoveCommand;
+import MarsRover.domain.command.TurnLeftCommand;
+import MarsRover.domain.command.TurnRightCommand;
 
 import java.util.Arrays;
 import java.util.List;

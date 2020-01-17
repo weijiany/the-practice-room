@@ -1,4 +1,4 @@
-package MarsRover.v1;
+package MarsRover.domain;
 
 import lombok.Getter;
 

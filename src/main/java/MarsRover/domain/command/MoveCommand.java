@@ -1,7 +1,7 @@
-package MarsRover.v1.command;
+package MarsRover.domain.command;
 
-import MarsRover.v1.Direction;
-import MarsRover.v1.Rover;
+import MarsRover.domain.Direction;
+import MarsRover.domain.Rover;
 
 public class MoveCommand implements Command {
 

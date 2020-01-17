@@ -1,6 +1,6 @@
-package MarsRover.v1;
+package MarsRover.domain;
 
-import MarsRover.v1.command.CommandParser;
+import MarsRover.domain.command.Command;
 import lombok.Data;
 
 @Data
@@ -16,7 +16,7 @@ public class Rover {
         this.direction = direction;
     }
 
-    public void move(String path) {
-        CommandParser.parseOf(path).forEach(command -> command.exec(direction, this));
+    public void move(Command command) {
+        command.exec(direction, this);
     }
 }

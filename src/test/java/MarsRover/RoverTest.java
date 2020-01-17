@@ -1,5 +1,8 @@
-package MarsRover.v1;
+package MarsRover;
 
+import MarsRover.domain.Direction;
+import MarsRover.domain.Rover;
+import MarsRover.domain.command.MoveCommand;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -21,7 +24,7 @@ class RoverTest {
     @MethodSource(value = "roverForDirectionOnlyMoveOnce")
     void should_moved_rover(Rover expected, Direction direction) {
         Rover rover = new Rover(0, 0, direction);
-        rover.move("M");
+        rover.move(new MoveCommand());
 
         assertEquals(expected, rover);
     }
@@ -38,8 +41,9 @@ class RoverTest {
     @ParameterizedTest
     @MethodSource(value = "roverForDirectionTurnLeftAndOnlyMoveOnce")
     void should_move_and_turn_left(Rover expected, Direction direction) {
+        MarsRoverController controller = new MarsRoverController();
         Rover rover = new Rover(0, 0, direction);
-        rover.move("LM");
+        controller.move("LM", rover);
 
         assertEquals(expected, rover);
     }
@@ -56,16 +60,18 @@ class RoverTest {
     @ParameterizedTest
     @MethodSource(value = "roverForDirectionTurnRightAndOnlyMoveOnce")
     void should_move_and_turn_right(Rover expected, Direction direction) {
+        MarsRoverController controller = new MarsRoverController();
         Rover rover = new Rover(0, 0, direction);
-        rover.move("RM");
+        controller.move("RM", rover);
 
         assertEquals(expected, rover);
     }
 
     @Test
     void should_move_with_multiple_command() {
+        MarsRoverController controller = new MarsRoverController();
         Rover rover = new Rover(0, 0, Direction.N);
-        rover.move("MMLMMRMM");
+        controller.move("MMLMMRMM", rover);
 
         assertEquals(new Rover(-2, 4, Direction.N), rover);
     }
