@@ -20,7 +20,7 @@ public class RoverIntegrationTest {
     }
 
     @ParameterizedTest
-    @MethodSource(value = "roverForDirectionTurnLeftAndOnlyMoveOnce")
+    @MethodSource("roverForDirectionTurnLeftAndOnlyMoveOnce")
     void should_move_and_turn_left(Rover expected, Direction direction) {
         MarsRoverController controller = new MarsRoverController();
         Rover rover = new Rover(0, 0, direction);
@@ -39,7 +39,7 @@ public class RoverIntegrationTest {
     }
 
     @ParameterizedTest
-    @MethodSource(value = "roverForDirectionTurnRightAndOnlyMoveOnce")
+    @MethodSource("roverForDirectionTurnRightAndOnlyMoveOnce")
     void should_move_and_turn_right(Rover expected, Direction direction) {
         MarsRoverController controller = new MarsRoverController();
         Rover rover = new Rover(0, 0, direction);
