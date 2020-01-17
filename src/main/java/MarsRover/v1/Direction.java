@@ -42,20 +42,13 @@ public enum  Direction {
     private static Map<Integer, Direction> intForDirection =
             Arrays.stream(Direction.values()).collect(Collectors.toMap(Direction::getValue, direction -> direction));
 
-    private final int MAX_VALUE = 3;
-    private final int MIN_VALUE = 0;
-
     public abstract void move(Rover rover);
 
     public void turnLeft(Rover rover) {
-        int nextDirection = rover.getDirection().value - 1;
-        nextDirection = nextDirection < MIN_VALUE ? MAX_VALUE : nextDirection;
-        rover.setDirection(intForDirection.get(nextDirection));
+        rover.setDirection(intForDirection.get((rover.getDirection().value + 3) % 4));
     }
 
     public void turnRight(Rover rover) {
-        int nextDirection = rover.getDirection().value + 1;
-        nextDirection = nextDirection > MAX_VALUE ? MIN_VALUE : nextDirection;
-        rover.setDirection(intForDirection.get(nextDirection));
+        rover.setDirection(intForDirection.get((rover.getDirection().value + 1) % 4));
     }
 }
