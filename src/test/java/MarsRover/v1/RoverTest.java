@@ -1,8 +1,10 @@
 package MarsRover.v1;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RoverTest {
 
@@ -21,7 +23,7 @@ class RoverTest {
         Rover rover = new Rover(0, 0, direction);
         rover.move("M");
 
-        Assertions.assertEquals(expected, rover);
+        assertEquals(expected, rover);
     }
 
     private static Object[][] roverForDirectionTurnLeftAndOnlyMoveOnce() {
@@ -39,7 +41,7 @@ class RoverTest {
         Rover rover = new Rover(0, 0, direction);
         rover.move("LM");
 
-        Assertions.assertEquals(expected, rover);
+        assertEquals(expected, rover);
     }
 
     private static Object[][] roverForDirectionTurnRightAndOnlyMoveOnce() {
@@ -57,6 +59,14 @@ class RoverTest {
         Rover rover = new Rover(0, 0, direction);
         rover.move("RM");
 
-        Assertions.assertEquals(expected, rover);
+        assertEquals(expected, rover);
+    }
+
+    @Test
+    void should_move_with_multiple_command() {
+        Rover rover = new Rover(0, 0, Direction.N);
+        rover.move("MMLMMRMM");
+
+        assertEquals(new Rover(-2, 4, Direction.N), rover);
     }
 }
