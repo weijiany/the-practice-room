@@ -1,8 +1,7 @@
 package MarsRover.v1;
 
+import MarsRover.v1.command.CommandParser;
 import lombok.Data;
-
-import java.util.Arrays;
 
 @Data
 public class Rover {
@@ -18,13 +17,6 @@ public class Rover {
     }
 
     public void move(String path) {
-        Arrays.stream(path.split("")).forEach(command -> {
-            if ("M".equals(command))
-                direction.move(this);
-            if ("L".equals(command))
-                direction.turnLeft(this);
-            if ("R".equals(command))
-                direction.turnRight(this);
-        });
+        CommandParser.parseOf(path).forEach(command -> command.exec(direction, this));
     }
 }
