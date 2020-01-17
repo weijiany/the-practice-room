@@ -17,12 +17,14 @@ public class Rover {
         this.direction = direction;
     }
 
-    public Rover move(String path) {
+    public void move(String path) {
         Arrays.stream(path.split("")).forEach(command -> {
-            if ("M".equals(command)) {
+            if ("M".equals(command))
                 direction.move(this);
-            }
+            if ("L".equals(command))
+                direction.turnLeft(this);
+            if ("R".equals(command))
+                direction.turnRight(this);
         });
-        return this;
     }
 }
