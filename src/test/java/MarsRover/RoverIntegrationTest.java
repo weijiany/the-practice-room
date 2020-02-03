@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RoverIntegrationTest {
 
@@ -26,7 +26,7 @@ public class RoverIntegrationTest {
         Rover rover = new Rover(0, 0, direction);
         controller.move("LM", rover);
 
-        assertEquals(expected, rover);
+        assertThat(rover).isEqualTo(expected);
     }
 
     private static Object[][] roverForDirectionTurnRightAndOnlyMoveOnce() {
@@ -45,7 +45,7 @@ public class RoverIntegrationTest {
         Rover rover = new Rover(0, 0, direction);
         controller.move("RM", rover);
 
-        assertEquals(expected, rover);
+        assertThat(rover).isEqualTo(expected);
     }
 
     @Test
@@ -54,6 +54,6 @@ public class RoverIntegrationTest {
         Rover rover = new Rover(0, 0, Direction.N);
         controller.move("MMLMMRMM", rover);
 
-        assertEquals(new Rover(-2, 4, Direction.N), rover);
+        assertThat(rover).isEqualTo(new Rover(-2, 4, Direction.N));
     }
 }

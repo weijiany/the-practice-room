@@ -4,8 +4,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -32,13 +32,14 @@ class GuesserTest {
         Guesser guesser = new Guesser(mockGenerator);
         String actual = guesser.guess(guessNumber);
 
-        assertEquals(result, actual);
+        assertThat(actual).isEqualTo(result);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "12"})
     void should_throw_exception_when_input_has_error(String guessNumber) {
-        WrongInputException exception = assertThrows(WrongInputException.class, () -> new Guesser().guess(guessNumber));
-        assertEquals(exception.getMessage(), "Wrong Input, input again");
+        assertThatThrownBy(() -> new Guesser().guess(guessNumber))
+                .isInstanceOf(WrongInputException.class)
+                .hasMessage("Wrong Input, input again");
     }
 }

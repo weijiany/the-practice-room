@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -18,6 +18,6 @@ class ResultGeneratorTest {
         ResultGenerator generator = new ResultGenerator();
         String actual = generator.generateResult(mockRandom);
 
-        assertEquals("1234", actual);
+        assertThat(actual).isEqualTo("1234");
     }
 }
