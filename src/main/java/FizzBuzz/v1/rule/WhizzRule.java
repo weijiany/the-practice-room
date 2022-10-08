@@ -1,4 +1,4 @@
-package FizzBuzz.v1;
+package FizzBuzz.v1.rule;
 
 import FizzBuzz.NameConstant;
 import FizzBuzz.v1.rule.Rule;

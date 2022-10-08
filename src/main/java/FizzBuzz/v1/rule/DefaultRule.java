@@ -1,7 +1,5 @@
 package FizzBuzz.v1.rule;
 
-import FizzBuzz.v1.WhizzRule;
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
